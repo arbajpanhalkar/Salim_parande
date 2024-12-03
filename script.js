@@ -95,14 +95,16 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Mobile Navigation
+// Mobile Menu Toggle
 const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
+const navElements = document.querySelector('.nav-elements');
 const navLinks = document.querySelectorAll('.nav-links li');
 
 burger.addEventListener('click', () => {
     // Toggle Navigation
-    nav.classList.toggle('nav-active');
+    navElements.classList.toggle('active');
+    burger.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
     
     // Animate Links
     navLinks.forEach((link, index) => {
@@ -112,19 +114,106 @@ burger.addEventListener('click', () => {
             link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
         }
     });
-    
-    // Burger Animation
-    burger.classList.toggle('toggle');
 });
 
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+// Close mobile menu when clicking a link
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navElements.classList.contains('active')) {
+            navElements.classList.remove('active');
+            burger.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            
+            navLinks.forEach(link => {
+                link.style.animation = '';
+            });
+        }
     });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (navElements.classList.contains('active') && 
+        !navElements.contains(e.target) && 
+        !burger.contains(e.target)) {
+        navElements.classList.remove('active');
+        burger.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        
+        navLinks.forEach(link => {
+            link.style.animation = '';
+        });
+    }
+});
+
+// Handle scroll events
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Add/remove scrolled class
+    if (scrollTop > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    // Hide/show navbar on scroll
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
+// Active section highlighting
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.nav-links a[href*=${sectionId}]`);
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLink?.classList.add('active');
+        } else {
+            navLink?.classList.remove('active');
+        }
+    });
+});
+
+// Smooth scroll for Safari
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Handle resize events
+let resizeTimer;
+window.addEventListener('resize', () => {
+    document.body.classList.add('resize-animation-stopper');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        document.body.classList.remove('resize-animation-stopper');
+    }, 400);
 });
 
 // Form Submission
