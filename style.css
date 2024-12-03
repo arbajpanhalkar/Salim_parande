@@ -1111,6 +1111,59 @@ body {
     font-weight: bold;
 }
 
+/* About Section Mobile Improvements */
+@media screen and (max-width: 768px) {
+    .about-section {
+        position: relative;
+    }
+
+    .about-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.95);
+        z-index: 1;
+    }
+
+    .about-section > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    .about-content {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-title,
+    .about-subtitle,
+    .about-description {
+        color: #000000 !important;
+        text-shadow: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-content {
+        padding: 15px;
+    }
+
+    .about-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .about-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}
+
 /* Skills Section */
 .skills {
     padding: 100px 0;
@@ -3805,4 +3858,37 @@ footer {
 .section-content {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    color: #3498db;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-subtitle {
+        color: #000000 !important;
+        font-size: 1.1rem;
+        text-shadow: none;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-subtitle {
+        color: #000000 !important;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 12px;
+        line-height: 1.5;
+    }
+    
+    .about-section {
+        background: rgba(255, 255, 255, 0.98);
+    }
 }
