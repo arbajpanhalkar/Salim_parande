@@ -981,19 +981,31 @@ body {
     border-left: 4px solid #3498db;
 }
 
+.hero-quote .hero-tagline {
+    color: #000000;
+    font-weight: 400;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
 @media (max-width: 768px) {
     .hero-tagline p {
         font-size: 1.2rem;
         padding-left: 15px;
-        color: black;
+        color: #000000 !important;
+        text-shadow: none;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        border-radius: 8px;
     }
 }
 
 @media (max-width: 480px) {
     .hero-tagline p {
         font-size: 1.1rem;
-        padding-left: 12px;
-        color: black;
+        padding: 12px;
+        font-weight: 500;
     }
 }
 
@@ -2438,8 +2450,8 @@ footer {
         gap: 40px;
     }
 
-    .timeline-item {
-        padding: 30px;
+    .timeline {
+        max-width: 600px;
     }
 
     .skills-grid {
@@ -2485,6 +2497,10 @@ footer {
     .about-image {
         max-width: 300px;
         margin: 0 auto;
+    }
+
+    .timeline {
+        padding: 20px 0;
     }
 
     .timeline-item {
