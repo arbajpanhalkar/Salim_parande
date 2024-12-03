@@ -3259,8 +3259,7 @@ footer {
     .card,
     .skill-card,
     .project-card,
-    .timeline-item,
-    .contact-form {
+    .timeline-item {
         background: var(--card-bg);
         backdrop-filter: blur(10px);
     }
@@ -3614,4 +3613,176 @@ footer {
     .contact-info .multi-info {
         align-items: center;
     }
+}
+
+/* Mobile Responsive Fixes */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        padding: 60px 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .hero-section .tagline {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .metrics-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .metric-card {
+        padding: 20px;
+    }
+
+    .metric-card h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .metric-card p {
+        font-size: 1rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section .tagline {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .metric-card {
+        padding: 15px;
+    }
+
+    .metric-card h2 {
+        font-size: 2rem;
+    }
+
+    .metric-card p {
+        font-size: 0.9rem;
+    }
+
+    /* Fix text overflow */
+    .hero-section, 
+    .metric-card,
+    .section-content {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+}
+
+/* Fix for Netlify Display */
+.hero-section,
+.metric-card,
+.section-content {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Ensure text contrast */
+.hero-section h1,
+.hero-section .tagline,
+.metric-card h2,
+.metric-card p {
+    color: #2c3e50;
+    text-shadow: none;
+}
+
+/* Improve readability on mobile */
+.hero-section .tagline {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Fix metric cards layout */
+.metrics-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Mobile Text Color Fixes */
+@media screen and (max-width: 768px) {
+    .hero-section h1,
+    .hero-section h2,
+    .hero-section p,
+    .hero-section .tagline,
+    .metric-card h2,
+    .metric-card p,
+    .section-title,
+    .section-content p {
+        color: #000000 !important;
+        text-shadow: none !important;
+    }
+
+    .hero-section {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .metric-card {
+        background: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .metric-card h2 {
+        font-weight: 600;
+    }
+
+    .metric-card p {
+        opacity: 1;
+    }
+}
+
+/* Ensure High Contrast for Small Screens */
+@media screen and (max-width: 480px) {
+    .hero-section h1 {
+        color: #000000 !important;
+        font-weight: 700;
+    }
+
+    .hero-section .tagline {
+        color: #333333 !important;
+        font-weight: 500;
+    }
+
+    .metric-card {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Global Text Contrast Improvements */
+.hero-section,
+.metric-card,
+.section-content {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
