@@ -21,7 +21,7 @@ A professional portfolio website showcasing engineering leadership experience an
 
 ## Live Demo
 
-Visit the live website: [Engineering Leadership Portfolio](https://arbajpanhalkar.github.io/portfolio/)
+Visit the live website: [Engineering Leadership Portfolio](https://salimparande.netlify.app/))
 
 ## Contact
 
